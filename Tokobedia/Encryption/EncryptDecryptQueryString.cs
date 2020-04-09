@@ -12,6 +12,7 @@ namespace Tokobedia.Encryption
     {
         public string Encrypt(string clearText)
         {
+
             //just another test
             string EncryptionKey = "hyddhrii%2moi43Hd5%%";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
