@@ -1,0 +1,112 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Tokobedia.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+
+<%--    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>--%>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" runat="server" />
+    <style>
+        body{
+            padding:0px;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <div>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand text-uppercase" href="#">Tokobedia</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                          <li class="nav-item">
+                            <a class="nav-link" href="<%=ResolveClientUrl("~")%>View/Home.aspx">Home</a>
+                          </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Product
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="<%=ResolveClientUrl("~")%>View/ViewProduct.aspx">View Porduct</a>    
+<%--                                        <a class="dropdown-item" href="<%=ResolveClientUrl("~")%>View/InsertProduct.aspx">Insert Product</a>--%>
+                                </div>
+                            </li>
+
+                              <li class="nav-item dropdown" id="Pnl_Admin1" runat="server" visible="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProductType" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Product Type
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="<%=ResolveClientUrl("~")%>View/ViewProductType.aspx">View ProductType</a>                                  
+                                    </div>
+                              </li>
+                              
+                              <li class="nav-item dropdown" id="Pnl_Admin2" runat="server" visible="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        User
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="<%=ResolveClientUrl("~")%>View/ViewUser.aspx">View User</a>                                          
+                                    </div>
+                              </li>
+                        </ul>
+                      <div class="form-inline my-2 my-lg-0">
+                           <asp:LinkButton id="lb_Register" Text="Register" runat="server" class="nav-link" OnClick="Register_onClick" Visible="true"/>
+                           <asp:LinkButton id="lb_Logout" Text="Log-Out" runat="server" class="nav-link" OnClick="LogOut_onClick" Visible="false"/>
+                           <asp:LinkButton id="Login_h1"  Text="Log-in" runat="server" class="nav-link" OnClick="Login_onClick" Visible="true"/>
+                           <%--<asp:Literal ID="Literal_GreetMessage" runat="server"></asp:Literal>--%>
+                           <asp:LinkButton id="Lb_ViewProfile" runat="server"  class="nav-link" OnClick="ViewProfile_Click" Text=""/>
+                             
+                        <%--  </asp:linkbutton>--%>
+                       </div>
+              </div>
+            </nav>
+        </div>
+        
+        <div class="container w-100 mt-5">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <hr />
+        <footer>
+            <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+        </footer>
+
+ </form>
+</body>
+</html>
